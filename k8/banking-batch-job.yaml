@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: banking-batch-job
+spec:
+  backoffLimit: 2
+  template:
+    spec:
+      containers:
+      - name: banking-batch
+        image: hardikdocker18/banking-batch:latest
+        imagePullPolicy: Always
+      restartPolicy: Never
+
