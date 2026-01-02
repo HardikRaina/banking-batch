@@ -1,0 +1,3 @@
+Total transactions: 5
+Total amount: 9400.0
+Average transaction: 1880.0

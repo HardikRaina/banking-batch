@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: banking-batch-job
+spec:
+  backoffLimit: 2
+  template:
+    spec:
+      containers:
+      - name: banking-batch
+        image: banking-batch:1.0
+        imagePullPolicy: Never
+      restartPolicy: Never
