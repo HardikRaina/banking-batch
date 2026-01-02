@@ -2,9 +2,9 @@ pipeline {
     agent { label 'agent' }
 
     stages {
-        stage('Clone') {
+        stage('Checkout') {
             steps {
-                echo "Code pulled"
+                checkout scm
             }
         }
 
@@ -14,10 +14,14 @@ pipeline {
             }
         }
 
-        stage('Push Image') {
+        stage('Push to DockerHub') {
             steps {
-                sh 'docker push hardikraina/banking-batch'
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+                    sh 'docker push hardikraina/banking-batch'
+                }
             }
         }
     }
 }
+
