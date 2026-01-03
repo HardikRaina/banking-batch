@@ -4,7 +4,7 @@ import os
 
 INPUT_BUCKET = "banking-batch-input-hardik"
 OUTPUT_BUCKET = "banking-batch-output-hardik"
-INPUT_FILE = "transactions_2026_01_02.csv"
+INPUT_FILE = "transactions_2026_01_02.csv.xlsx"
 OUTPUT_FILE = "report_2026_01_02.txt"
 
 s3 = boto3.client("s3")
